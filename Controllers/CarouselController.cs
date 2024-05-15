@@ -31,15 +31,19 @@ public class CarouselController : Controller
 
         var jsonData = System.IO.File.ReadAllText("jos.json");
         carousels = JsonConvert.DeserializeObject<List<Carousel>>(jsonData);
-        var i = 1;
+        var text = "";
         foreach (var carousel in carousels)
         {
-            carousel.Id = i;
-            i++;
+            text += carousel.Title + Environment.NewLine;
+            text += carousel.Body + Environment.NewLine;
+            text += "Example:"+carousel.Example + Environment.NewLine;
+            text += carousel.HashTag + Environment.NewLine;
+            text += Environment.NewLine; // Add an empty line between carousel entries
         }
 
         return View(new CarouselViewModel()
         {
+            Text = text,
             Content = carousels
         });
     }

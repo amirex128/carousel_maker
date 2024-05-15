@@ -3,10 +3,49 @@
 @{
     Layout = "_Layout";
 }
+
+<button id="copyButton" class="z-50 fixed bottom-4 right-4 element-to-hide rounded-full bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 px-5 py-3 text-center text-white shadow-lg">
+    Copy Text
+</button>
+<script>
+    function decodeHtml(htmlString) {
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = htmlString;
+        return tempElement.textContent || tempElement.innerText;
+    }
+
+    const copyButton = document.getElementById('copyButton');
+    let encodedText = "@Model.Text"
+    @*let decodedText = encodedText.replace(/&#xD;\&#xA;/g, '\n');
+     decodedText1 = decodedText.replace(/&amp;/g, '&');
+    let escapedData2 = decodedText1.replace(/&gt;/g, "\\&gt;").replace(/&lt;/g, "\\&lt;");*@
+    const decodedText = decodeHtml(encodedText);
+
+    copyButton.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(decodedText);
+        } catch (err) {
+            console.error('Failed to copy text:', err);
+        }
+    });
+</script>
 <div class="carousel">
     @foreach (var item in Model.Content)
     {
         <div class="item print-item relative">
+            @if (item.Id == 1)
+            {
+                <div class="px-5 py-3 rounded-full bg-slate-200 text-gray-700 description shadow-md my-3">
+                    <span>/*</span> How to Become the Best Version of Myself 😎 <span>*/</span>
+                </div>
+            }
+            else
+            {
+                <div class="px-5 py-3 rounded-full bg-slate-200 text-gray-700 description shadow-md my-5">
+                    <span>/*</span> @Model.Content.First().Title <span>*/</span>
+                </div>
+            }
+            
             <div class="bg-gray-500 bg-opacity-40 shadow-md rounded-md p-10 mx-5">
 
                 @if (item.Id == 1)
@@ -16,23 +55,23 @@
                     </div>
                 }
                 <div class="title text-left text-yellow-400 text-5xl mb-5">@item.Title</div>
-                <div class="description text-white text-4xl mt-2 underline">@item.Description</div>
-                <div class="description text-white text-3xl mt-3">@item.LongDescription</div>
-                <span class="name-info inline-block text-white text-xl mt-4 p-2 rounded-xl shadow-md"><span class="underline">Example</span> : @item.Example</span>
-                <span class="name-info inline-block bg-blue-800 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.HashTag</span>
+                <div class="description text-white text-3xl mt-3">@item.Body</div>
+                <span class="name-info inline-block text-white text-xl mt-4 p-2 rounded-xl shadow-md bg-opacity-10 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
+                <span class="name-info inline-block bg-blue-800 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Question</span>
+                <span class="name-info inline-block bg-green-800 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Answer</span>
 
 
             </div>
             <div class="">
-                <div class=" absolute bottom-5 left-5 abs j py-2 px-5 max-w-sm mx-auto bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-                    <img class="block mx-auto h-20 rounded-full sm:mx-0 sm:shrink-0" src="~/amir_shirdel.jpg" alt="Woman's Face"/>
-                    <div class="text-center space-y-2 sm:text-left">
+                <div class=" absolute bottom-5 left-5 abs j py-2 px-5 max-w-sm mx-auto bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-1 sm:py-3 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
+                    <img class="block mx-auto h-16 rounded-full sm:mx-0 sm:shrink-0" src="~/amir_shirdel.jpg" alt="Woman's Face"/>
+                    <div class="text-center space-y-1 sm:text-left">
                         <div class="space-y-0.5">
                             <p class="name text-lg text-white font-semibold">
                                 Amir Shirdel 🧑‍💻
                             </p>
                             <p class="name-info text-slate-200 font-medium">
-                                Software Architect
+                                Software Engineer
                             </p>
                         </div>
                     </div>
@@ -40,9 +79,7 @@
                 <div class="p-5 absolute bottom-5 right-5 rounded-full shadow-lg text-white title">
                     @item.Id
                 </div>
-                <div class="px-5 py-3 absolute top-5 left-5 rounded-full bg-slate-200 text-gray-700 description shadow-md">
-                    <span>/*</span> How to Become the Best Version of Myself 😎 <span>*/</span>
-                </div>
+
             </div>
 
         </div>

@@ -2,10 +2,11 @@
 
 public class Carousel
 {
-    public string Title { get; set; }
-    public string Description { get; set; }
     public int Id { get; set; }
+    public string Title { get; set; }
+    public string Body { set; get; }
     public string Example { get; set; }
-    public string LongDescription { get; set; }
     public string HashTag { get; set; }
+    public string Question { get; set; }
+    public string Answer { get; set; }
 }
