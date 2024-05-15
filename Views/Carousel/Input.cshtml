@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model carousel_maker.ModelView.InputJsonCarouselModel 
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mx-auto p-4">
+    Title :
+    <input class="shadow mb-5 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+
+    <textarea cols="30" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+write an article with 10 subject about "database index hash in mysql" with exact title word must be in 5 word count and description must be in 20 word count and long description must be in 50 word count and example (about use case) must be in 20 word count  .
+please Pay attention to the number of words i asked and write description more "Detailed and accurate and long say an example about subject" 
+and then write output to array of json with this syntax that i mentioned  :
+```
+[
+  {
+    "Title": "Title",
+    "Description": "Description",
+    "LongDescription": "Long Description",
+    "Example": "Example",
+    "HashTag": "say Hash",
+    "Id": 1
+  },
+  {
+    "Title": "Title",
+    "Description": "Description",
+    "Example": "Example",
+    "LongDescription": "Long Description",
+    "HashTag": "say Hash Tag",
+    "Id": 2
+  },
+  ... other item of array
+]
+```
+
+</textarea>
+
+    <form asp-action="Save" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+            <label for="Json" class="block text-gray-700 text-sm font-bold mb-2">
+                Carousel JSON Code
+            </label>
+            <textarea asp-for="Json" name="Json" id="Json" cols="30" rows="30" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Update Carousel
+            </button>
+        </div>
+    </form>
+
+</div>

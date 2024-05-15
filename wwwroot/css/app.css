@@ -1,0 +1,112 @@
+﻿@font-face {
+    font-family: "JetBrains-Mono-Bold";
+    src: url('./../fonts/ttf/JetBrainsMono-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: "JetBrains-Mono-Regular";
+    src: url('./../fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: "JetBrains-Mono-Italic";
+    src: url('./../fonts/ttf/JetBrainsMono-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: "JetBrains-Mono-Light";
+    src: url('./../fonts/ttf/JetBrainsMono-Light.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.carousel {
+    display: block; /* Change from flex to block */
+    width: 100%; /* Adjust to full width */
+    height: 100vh; /* Adjust to full viewport height */
+
+}
+
+.title {
+    font-family: "JetBrains-Mono-Bold", sans-serif;
+}
+.description {
+    font-family: "JetBrains-Mono-Regular", sans-serif;
+}
+.name {
+    font-family: "JetBrains-Mono-Italic", sans-serif;
+}
+.name-info {
+    font-family: "JetBrains-Mono-Light", sans-serif;
+}
+.item {
+    width: 100%; /* Adjust to full width */
+    height: 100vh; /* Adjust to full viewport height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    page-break-after: always; /* Add a page break after each item */
+    background-image: url('https://carouselhero.com/backgrounds/black-leaves-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+@media print {
+    body {
+        background-image: url('https://carouselhero.com/backgrounds/black-leaves-1.jpg'); /* Replace 'your_image_url' with your image URL */
+        -webkit-print-color-adjust: exact; /* For WebKit-based browsers (Chrome, Safari) */
+        color-adjust: exact; /* For Firefox */
+    }
+
+    /* Remove header and footer information */
+    @page {
+        margin: 0;
+        /* Remove any default header or footer */
+        @top-center {
+            content: none;
+        }
+        @bottom-center {
+            content: none;
+        }
+        @top-right {
+            content: none;
+        }
+        @bottom-right {
+            content: none;
+        }
+        @top-left {
+            content: none;
+        }
+        @bottom-left {
+            content: none;
+        }
+    }
+
+    /* Remove page numbers */
+    body {
+        counter-reset: pagination;
+    }
+
+    /* Disable automatic page numbering */
+    ::-moz-page-number {
+        display: none;
+    }
+
+    /* For Webkit-based browsers (Chrome, Safari) */
+    ::-webkit-page-footer-area,
+    ::-webkit-page-header-area {
+        display: none;
+    }
+
+    /* For Firefox */
+    @page {
+        margin: 0;
+    }
+
+    /* Hide any elements you don't want to print */
+    .no-print {
+        display: none !important;
+    }
+}
+

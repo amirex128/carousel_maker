@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carousel_maker", "carousel_maker.csproj", "{67C2360C-011A-453F-99BA-162D25BFA58C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67C2360C-011A-453F-99BA-162D25BFA58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C2360C-011A-453F-99BA-162D25BFA58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C2360C-011A-453F-99BA-162D25BFA58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C2360C-011A-453F-99BA-162D25BFA58C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
