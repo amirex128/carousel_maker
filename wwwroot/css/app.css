@@ -39,6 +39,7 @@ body {
 .name-info {
     font-family: "JetBrains-Mono-Light", sans-serif;
 }
+
 .item {
     width: 100%; /* Adjust to full width */
     height: 100vh; /* Adjust to full viewport height */
@@ -47,16 +48,20 @@ body {
     align-items: center;
     justify-content: flex-start;
     page-break-after: always; /* Add a page break after each item */
-    background-image: url('https://picsum.photos/800/800?blur');
+    background-image: url('https://picsum.photos/500/500?blur');
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
 }
 
 @media print {
     body {
-        background-image: url('https://picsum.photos/800/800?blur');
+        background-image: url('https://picsum.photos/500/800?blur');
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Add this line */
+
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
     }
@@ -83,39 +88,31 @@ body {
         }
     }
 
-    /* Remove page numbers */
     body {
         counter-reset: pagination;
     }
 
-    /* Disable automatic page numbering */
     ::-moz-page-number {
         display: none;
     }
 
-    /* For Webkit-based browsers (Chrome, Safari) */
     ::-webkit-page-footer-area,
     ::-webkit-page-header-area {
         display: none;
     }
 
-    /* For Firefox */
     @page {
         margin: 0;
     }
 
-    /* Hide any elements you don't want to print */
     .no-print {
         display: none !important;
     }
-}
-
-@media print {
-    /* Target the element using its class or ID */
     .element-to-hide {
         display: none;
     }
 }
+
 .overlay {
     position: fixed; /* changed to fixed */
     top: 0;

@@ -15,7 +15,7 @@
             <input id="subject"
                    placeholder="Subject of Your Article"
                    class="opacity-50 shadow mb-5 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                   type="text">
+                   type="text" >
         </div>
 
         <div>
@@ -70,12 +70,12 @@
     });
 
     function updateTextarea(value) {
-        var textareaContent = `write an article about "${value}" with 5 subject . finally put result in json format with this syntax
+        var textareaContent = `write an article about "${value}" with 7 subject . note that Body must be exactly 50 words . finally put result in json format with this syntax (do not write any things just write json) :
         \`\`\`
 [
   {
     "Title": "Title",
-    "Body": "Description must maximum 50 words",
+    "Body": "Body must be exactly 50 words",
     "Example": "Example",
     "HashTag": "just one trended Hash Tag about this article for linkedin",
     "Question": "Question",
@@ -85,7 +85,7 @@
   {
     "Title": "Title",
     "Example": "Example",
-    "Body": "Description must maximum 50 words",
+    "Body": "Body must be exactly 50 words",
     "HashTag": "just one trended Hash Tag about this article for linkedin",
     "Question": "Question",
     "Answer": "Answer",

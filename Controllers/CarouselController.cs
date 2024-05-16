@@ -18,9 +18,17 @@ public class CarouselController : Controller
 
     public IActionResult Save(InputJsonCarouselModel model)
     {
-        var titleDict = JsonConvert.DeserializeObject<List<Carousel>>(model.Json);
-        string jsonLog = JsonConvert.SerializeObject(titleDict);
-        System.IO.File.WriteAllText("jos.json", jsonLog);
+        try
+        {
+            var titleDict = JsonConvert.DeserializeObject<List<Carousel>>(model.Json);
+            string jsonLog = JsonConvert.SerializeObject(titleDict);
+            System.IO.File.WriteAllText("jos.json", jsonLog);
+        }
+        catch (Exception ex)
+        {
+            return NotFound();
+        }
+
 
         return RedirectToAction("Make");
     }
@@ -36,7 +44,7 @@ public class CarouselController : Controller
         {
             text += carousel.Title + Environment.NewLine;
             text += carousel.Body + Environment.NewLine;
-            text += "Example:"+carousel.Example + Environment.NewLine;
+            text += "Example:" + carousel.Example + Environment.NewLine;
             text += carousel.HashTag + Environment.NewLine;
             text += Environment.NewLine; // Add an empty line between carousel entries
         }
