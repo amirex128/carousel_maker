@@ -1,24 +1,83 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@model carousel_maker.ModelView.InputJsonCarouselModel 
+@model carousel_maker.ModelView.InputJsonCarouselModel
 @{
     Layout = "_Layout";
 }
 
-<div class="container mx-auto p-4">
-    Title :
-    <input class="shadow mb-5 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+<div id="alert" class="hidden fixed bottom-10 left-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg transient">
+    <p>Copied!</p>
+</div>
+<div class="overlay"></div>
 
-    <textarea cols="30" rows="10" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-write an article with 5 subject about "database index hash in mysql"
-please Pay attention to the number of words i asked and write description more "Detailed and accurate and long say an example about subject" 
-and then write output to array of json with this syntax that i mentioned  :
-```
+<div class="w-screen h-screen flex justify-center items-center">
+    <div class="bg-opacity-10 bg-white rounded-md shadow-md p-5 w-96 flex flex-col justify-between items-center">
+        <div>
+            <input id="subject"
+                   placeholder="Subject of Your Article"
+                   class="opacity-50 shadow mb-5 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   type="text">
+        </div>
+
+        <div>
+            <textarea readonly placeholder="Text of AI Article" id="text" cols="30" rows="10"
+              class="opacity-50 w-50 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+            
+        </div>
+        <div>
+            <button id="copyButton"
+                    class="opacity-50 bg-blue-500 mt-2 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
+                Copy
+            </button>
+        </div>
+
+        <div class="flex justify-center items-center">
+            <a href="https://gemini.google.com/" target="_blank"
+                        class="opacity-50 bg-red-500 mt-2 hover:bg-red-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline mr-2">
+                    Gemini
+                </a>
+            <a href="https://chatgpt.com/" target="_blank"
+               class="opacity-50 bg-blue-500 mt-2 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline mr-2">
+                ChatGPT
+            </a>
+
+        </div>
+        <div>
+            <form asp-action="Save" method="post" class="opacity-50 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col justify-center items-center">
+                <div class="mb-4">
+                    <label for="Json" class="block text-white text-sm font-bold mb-2">
+                        Carousel JSON Code
+                    </label>
+                    <textarea asp-for="Json" name="Json" id="Json" cols="30" rows="10"
+                              class="h-52 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                </div>
+                <div>
+                    <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
+                        Update Carousel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+</div>
+<script>
+    document.getElementById('subject').addEventListener('input', function () {
+        var inputFieldValue = this.value;
+        updateTextarea(inputFieldValue);
+    });
+
+    function updateTextarea(value) {
+        var textareaContent = `write an article about "${value}" with 5 subject . finally put result in json format with this syntax
+        \`\`\`
 [
   {
     "Title": "Title",
     "Body": "Description must maximum 50 words",
     "Example": "Example",
-    "HashTag": "one trending Hash Tag for linkedin",
+    "HashTag": "just one trended Hash Tag about this article for linkedin",
     "Question": "Question",
     "Answer": "Answer",
     "Id": 1
@@ -27,29 +86,48 @@ and then write output to array of json with this syntax that i mentioned  :
     "Title": "Title",
     "Example": "Example",
     "Body": "Description must maximum 50 words",
-    "HashTag": "one trending Hash Tag for linkedin",
+    "HashTag": "just one trended Hash Tag about this article for linkedin",
     "Question": "Question",
     "Answer": "Answer",
     "Id": 2
   },
+   {
+    "Title": "Title",
+    "Example": "Example",
+    "Body": "Description must maximum 50 words",
+    "HashTag": "just one trended Hash Tag about this article for linkedin",
+    "Question": "Question",
+    "Answer": "Answer",
+    "Id": 3
+  },
   ... other item of array
-]
-```
+\`\`\`
+`;
+        document.getElementById('text').value = textareaContent;
+    }
 
-</textarea>
+    function decodeHtml(htmlString) {
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = htmlString;
+        return tempElement.textContent || tempElement.innerText;
+    }
 
-    <form asp-action="Save" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-            <label for="Json" class="block text-gray-700 text-sm font-bold mb-2">
-                Carousel JSON Code
-            </label>
-            <textarea asp-for="Json" name="Json" id="Json" cols="30" rows="30" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-        </div>
-        <div class="flex items-center justify-between">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                Update Carousel
-            </button>
-        </div>
-    </form>
+    document.getElementById('copyButton').addEventListener('click', async () => {
+        let encodedText = document.getElementById('text').value
+        const decodedText = decodeHtml(encodedText);
+        try {
+            await navigator.clipboard.writeText(decodedText);
+        } catch (err) {
+            console.error('Failed to copy text:', err);
+        }
+        showCopiedAlert()
+    });
 
-</div>
+    function showCopiedAlert() {
+        var alertDiv = document.getElementById('alert');
+        alertDiv.classList.remove('hidden');
+        setTimeout(function () {
+            alertDiv.classList.add('hidden');
+        }, 2000);
+    }
+</script>

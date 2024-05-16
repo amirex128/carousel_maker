@@ -3,10 +3,14 @@
 @{
     Layout = "_Layout";
 }
-
+<div id="alert" class="element-to-hide hidden fixed bottom-10 left-4 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg transient">
+    <p>Copied!</p>
+</div>
 <button id="copyButton" class="z-50 fixed bottom-4 right-4 element-to-hide rounded-full bg-blue-500 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 px-5 py-3 text-center text-white shadow-lg">
-    Copy Text
+    Copy
 </button>
+<div class="overlay"></div>
+
 <script>
     function decodeHtml(htmlString) {
         const tempElement = document.createElement('div');
@@ -14,20 +18,23 @@
         return tempElement.textContent || tempElement.innerText;
     }
 
-    const copyButton = document.getElementById('copyButton');
-    let encodedText = "@Model.Text"
-    @*let decodedText = encodedText.replace(/&#xD;\&#xA;/g, '\n');
-     decodedText1 = decodedText.replace(/&amp;/g, '&');
-    let escapedData2 = decodedText1.replace(/&gt;/g, "\\&gt;").replace(/&lt;/g, "\\&lt;");*@
-    const decodedText = decodeHtml(encodedText);
-
-    copyButton.addEventListener('click', async () => {
+    document.getElementById('copyButton').addEventListener('click', async () => {
+        let encodedText = "@Model.Text"
+        const decodedText = decodeHtml(encodedText);
         try {
             await navigator.clipboard.writeText(decodedText);
         } catch (err) {
             console.error('Failed to copy text:', err);
         }
+        showCopiedAlert()
     });
+    function showCopiedAlert() {
+        var alertDiv = document.getElementById('alert');
+        alertDiv.classList.remove('hidden');
+        setTimeout(function() {
+            alertDiv.classList.add('hidden');
+        }, 2000);
+    }
 </script>
 <div class="carousel">
     @foreach (var item in Model.Content)
@@ -46,19 +53,20 @@
                 </div>
             }
             
-            <div class="bg-gray-500 bg-opacity-40 shadow-md rounded-md p-10 mx-5">
+            <div class="bg-gray-500 bg-opacity-70 shadow-md rounded-md p-10 mx-5">
 
                 @if (item.Id == 1)
                 {
                     <div>
-                        <div class="inline-block description text-left text-3xl mb-5 text-white text-gray-700" style="font-family: cursive">Topic 📑 : </div>
+                        <div class="inline-block description text-left text-3xl mb-5 text-white text-gray-700" style="font-family: cursive">Topic 📑👨‍💻 : </div>
                     </div>
                 }
-                <div class="title text-left text-yellow-400 text-5xl mb-5">@item.Title</div>
+                <div class="title text-left text-yellow-400 text-5xl mb-5">@item.Title💯</div>
                 <div class="description text-white text-3xl mt-3">@item.Body</div>
-                <span class="name-info inline-block text-white text-xl mt-4 p-2 rounded-xl shadow-md bg-opacity-10 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
-                <span class="name-info inline-block bg-blue-800 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Question</span>
-                <span class="name-info inline-block bg-green-800 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Answer</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-xl mt-4 p-2 rounded-xl shadow-md bg-opacity-10 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
+                <span class="name-info inline-block bg-blue-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Question🤔</span>
+                <span class="name-info inline-block bg-indigo-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Answer😃</span>
+                <span class="name-info inline-block bg-purple-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.HashTag</span>
 
 
             </div>
