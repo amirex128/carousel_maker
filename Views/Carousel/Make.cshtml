@@ -42,13 +42,13 @@
         <div class="item print-item relative">
             @if (item.Id == 1)
             {
-                <div class="px-5 py-1 rounded-full bg-slate-200 text-gray-700 description shadow-md my-3">
+                <div class="px-5 py-2 rounded-full bg-slate-200 text-gray-700 description shadow-md my-3">
                     <span>/*</span> How to Become the Best Version of Myself 😎 <span>*/</span>
                 </div>
             }
             else
             {
-                <div class="px-5 py-3 rounded-full bg-slate-200 text-gray-700 description shadow-md my-5">
+                <div class="px-5 py-2 rounded-full bg-slate-200 text-gray-700 description shadow-md my-5">
                     <span>/*</span> @Model.Content.First().Title <span>*/</span>
                 </div>
             }
@@ -64,14 +64,14 @@
                 <div class="title text-left text-yellow-400 text-5xl mb-5">@item.Title💯</div>
                 <div class="description text-white text-3xl mt-3">@item.Body</div>
                 <span class="name-info inline-block bg-gray-500 text-white text-xl mt-4 p-2 rounded-xl shadow-md bg-opacity-10 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
-                <span class="name-info inline-block bg-blue-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Question🤔</span>
-                <span class="name-info inline-block bg-indigo-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.Answer😃</span>
-                <span class="name-info inline-block bg-purple-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md">@item.HashTag</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md bg-opacity-20">@item.Question🤔</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md bg-opacity-30">@item.Answer😃</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md bg-opacity-10">@item.HashTag</span>
 
 
             </div>
             <div class="z-50">
-                <div class=" absolute bottom-2 left-2 abs j py-2 px-5 max-w-sm mx-auto bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-1 sm:py-3 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
+                <div class=" absolute bottom-4 left-4 abs j py-2 px-5 max-w-sm mx-auto bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-1 sm:py-3 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
                     <img class="block mx-auto h-16 rounded-full sm:mx-0 sm:shrink-0" src="~/amir_shirdel.jpg" alt="Woman's Face"/>
                     <div class="text-center space-y-1 sm:text-left">
                         <div class="space-y-0.5">
