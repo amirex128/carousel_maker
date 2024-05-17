@@ -39,21 +39,23 @@
 <div class="carousel">
     @foreach (var item in Model.Content)
     {
-        <div class="item print-item relative">
-            @if (item.Id == 1)
-            {
+        <div class="item print-item flex flex-col justify-between items-center">
+            <div>
+                @if (item.Id == 1)
+                {
                 <div class="px-5 py-2 rounded-full bg-slate-200 text-gray-700 description shadow-md my-3">
                     <span>/*</span> How to Become the Best Version of Myself 😎 <span>*/</span>
                 </div>
-            }
-            else
-            {
+                }
+                else
+                {
                 <div class="px-5 py-2 rounded-full bg-slate-200 text-gray-700 description shadow-md my-5">
                     <span>/*</span> @Model.Content.First().Title <span>*/</span>
                 </div>
-            }
+                }
+            </div>
             
-            <div class="bg-gray-500 bg-opacity-70 shadow-md rounded-md p-10 mx-5">
+            <div class="bg-gray-500 bg-opacity-70 shadow-md rounded-md p-5 mx-5">
 
                 @if (item.Id == 1)
                 {
@@ -62,16 +64,17 @@
                     </div>
                 }
                 <div class="title text-left text-yellow-400 text-5xl mb-5">@item.Title💯</div>
+                <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="description text-white text-3xl mt-3">@item.Body</div>
-                <span class="name-info inline-block bg-gray-500 text-white text-xl mt-4 p-2 rounded-xl shadow-md bg-opacity-10 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
-                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md bg-opacity-20">@item.Question🤔</span>
-                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md bg-opacity-30">@item.Answer😃</span>
-                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md bg-opacity-10">@item.HashTag</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-xl mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">@item.Question🤔</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">@item.Answer😃</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">@item.HashTag</span>
 
 
             </div>
-            <div class="z-50">
-                <div class=" absolute bottom-4 left-4 abs j py-2 px-5 max-w-sm mx-auto bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-1 sm:py-3 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
+            <div class="flex justify-between items-center w-full">
+                <div class=" abs j py-2 px-5 ml-4 mb-4  bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-1 sm:py-3 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
                     <img class="block mx-auto h-16 rounded-full sm:mx-0 sm:shrink-0" src="~/amir_shirdel.jpg" alt="Woman's Face"/>
                     <div class="text-center space-y-1 sm:text-left">
                         <div class="space-y-0.5">
@@ -84,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-5 absolute bottom-2 right-2 rounded-full shadow-lg text-white title">
+                <div class="p-5 mr-2 mb-2 rounded-full shadow-lg text-white title">
                     @item.Id
                 </div>
 
@@ -92,4 +95,39 @@
 
         </div>
     }
+    <div class="item print-item flex flex-col justify-between items-center">
+        <div>
+            <div class="px-5 py-2 rounded-full bg-slate-200 text-gray-700 description shadow-md my-5">
+                <span>/*</span> Learning and Practice Every Day 💪 <span>*/</span>
+            </div>
+        </div>
+
+        <div class="bg-gray-500 bg-opacity-70 shadow-md rounded-md p-5 mx-5">
+            
+            <div class="title text-left text-yellow-400 text-5xl mb-5">Follow For More 🔥❤️</div>
+            <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700">
+            <div class="description text-white text-3xl mt-3">Thanks For Reading ❤️</div>
+
+
+
+        </div>
+        <div class="flex justify-between items-center w-full">
+            <div class=" abs j py-2 px-5 ml-4 mb-4  bg-gray-500 bg-opacity-30 rounded-xl shadow-lg space-y-1 sm:py-3 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
+                <img class="block mx-auto h-16 rounded-full sm:mx-0 sm:shrink-0" src="~/amir_shirdel.jpg" alt="Woman's Face"/>
+                <div class="text-center space-y-1 sm:text-left">
+                    <div class="space-y-0.5">
+                        <p class="name text-lg text-white font-semibold">
+                            Amir Shirdel 🧑‍💻
+                        </p>
+                        <p class="name-info text-slate-200 font-medium">
+                            Software Engineer
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>

@@ -48,19 +48,19 @@ body {
     align-items: center;
     justify-content: flex-start;
     page-break-after: always; /* Add a page break after each item */
-    background-image: url('https://picsum.photos/500/500?blur');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    /*background-image: url('https://picsum.photos/500/500?blur');*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
 }
 
 @media print {
     body {
-        background-image: url('https://picsum.photos/500/800?blur');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed; /* Add this line */
+        /*background-image: url('https://picsum.photos/500/800?blur');*/
+        /*background-size: cover;*/
+        /*background-position: center;*/
+        /*background-repeat: no-repeat;*/
+        /*background-attachment: fixed; !* Add this line *!*/
 
         -webkit-print-color-adjust: exact;
         color-adjust: exact;
