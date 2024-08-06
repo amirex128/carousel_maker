@@ -47,12 +47,6 @@
                     <span>/*</span> How to Become the Best Version of Myself 😎 <span>*/</span>
                 </div>
                 }
-                else
-                {
-                <div class="px-5 py-2 rounded-full bg-slate-200 text-gray-700 description shadow-md my-5">
-                    <span>/*</span> @Model.Content.First().Title <span>*/</span>
-                </div>
-                }
             </div>
             
             <div class="bg-gray-500 bg-opacity-70 shadow-md rounded-md p-5 mx-5">
@@ -67,9 +61,11 @@
                 <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700">
                 <div class="description text-white text-3xl mt-3">@item.Body</div>
                 <span class="name-info inline-block bg-gray-500 text-white text-xl mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30 bg-gray-500"><span class="underline">Example</span> : @item.Example</span>
-                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">@item.Question🤔</span>
-                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">@item.Answer😃</span>
-                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">@item.HashTag</span>
+                <span class="name-info inline-block bg-gray-500 text-white text-lg mt-4 p-2 rounded-xl shadow-md mx-2 bg-opacity-30">
+                    @item.Question🤔
+                    <br/>
+                    @item.Answer😃
+                </span>
 
 
             </div>
